@@ -1,0 +1,76 @@
+{
+  "SFTP_FETCH_PATH": [
+    {
+      "step_name": "Arrival",
+      "step_description": "Arrival of data to be processed",
+      "step_status": "Success"
+    },
+    {
+      "step_name": "Preprocess",
+      "step_description": "Prepare raw data with source-specific processing",
+      "step_status": "Success"
+    },
+    {
+      "step_name": "Parse",
+      "step_description": "Extract data from arrival container",
+      "step_status": "Success"
+    },
+    {
+      "step_name": "Scrub",
+      "step_description": "Remove known field data errors",
+      "step_status": "Success"
+    },
+    {
+      "step_name": "Transform",
+      "step_description": "Refine and derive data values",
+      "step_status": "In Progress"
+    },
+    {
+      "step_name": "DB_Load",
+      "step_description": "Load data into a database",
+      "step_status": "Due"
+    },
+    {
+      "step_name": "DB_Run",
+      "step_description": "Perform database processing",
+      "step_status": "Future"
+    }
+  ],
+  "SFTP_FETCH_PATH_2": [
+    {
+      "step_name": "Arrival",
+      "step_description": "Arrival of data to be processed",
+      "step_status": "Success"
+    },
+    {
+      "step_name": "Preprocess",
+      "step_description": "Prepare raw data with source-specific processing",
+      "step_status": "Success"
+    },
+    {
+      "step_name": "Parse",
+      "step_description": "Extract data from arrival container",
+      "step_status": "Success"
+    },
+    {
+      "step_name": "Scrub",
+      "step_description": "Remove known field data errors",
+      "step_status": "Failure"
+    },
+    {
+      "step_name": "Transform",
+      "step_description": "Refine and derive data values",
+      "step_status": "Overdue"
+    },
+    {
+      "step_name": "DB_Load",
+      "step_description": "Load data into a database",
+      "step_status": "Future"
+    },
+    {
+      "step_name": "DB_Run",
+      "step_description": "Perform database processing",
+      "step_status": "Future"
+    }
+  ]
+}

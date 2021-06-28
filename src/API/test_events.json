@@ -1,0 +1,20 @@
+{
+  "BNYM_SUB_ACCOUNT": {
+    "name": "Ingest Mellon Sub Account",
+    "status": "In Progress",
+    "path": "SFTP_FETCH_PATH_2",
+    "token": "BNYM_SUB_ACCOUNT",
+    "group": "Ingest_Group",
+    "plan_date": 20210615,
+    "plan_time": "05:20"
+  },
+  "BNYM_TRADE": {
+    "name": "Ingest Mellon Trade",
+    "status": "Success",
+    "path": "SFTP_FETCH_PATH",
+    "token": "BNYM_TRADE",
+    "group": "Ingest_Group",
+    "plan_date": 20210615,
+    "plan_time": "05:20"
+  }
+}
