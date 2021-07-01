@@ -13,6 +13,8 @@ export default class MainTable extends Component {
 
   state = {
     events_data: test_events,
+    bar: true,
+    symbol: false
     // paths_data: test_paths,
   }
 
@@ -24,7 +26,9 @@ export default class MainTable extends Component {
         <CollapsibleRow
           key={event}
           events_data={events_data[event]}
-          darkMode={this.props.darkMode}
+          bar={this.state.bar}
+          symbol={this.state.symbol}
+        // darkMode={this.props.darkMode}
         />
       ))
     );
@@ -37,7 +41,7 @@ export default class MainTable extends Component {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell></TableCell>
+                <TableCell />
                 <TableCell>Name</TableCell>
                 <TableCell>Status</TableCell>
                 {/* <TableCell>Path</TableCell> */}

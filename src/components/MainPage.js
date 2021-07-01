@@ -17,7 +17,8 @@ export default class MainPage extends Component {
             </Typography>
           </Toolbar>
         </AppBar>
-        <MainTable darkMode={this.props.darkMode}></MainTable>
+        {/* darkMode={this.props.darkMode} */}
+        <MainTable></MainTable>
       </div>
     )
   }
