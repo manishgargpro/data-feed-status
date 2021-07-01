@@ -7,6 +7,7 @@ import {
   TableRow,
   Collapse,
   IconButton,
+  LinearProgress
 } from '@material-ui/core';
 import {
   KeyboardArrowDown,
@@ -31,11 +32,9 @@ export default function CollapsibleRow(props) {
   const { events_data, bar, symbol } = props;
   const [open, setOpen] = React.useState(false);
 
-  console.log(test_paths[events_data.path])
-
   var chooseColor = (status) => {
     // const lightInt = 200;
-    const darkInt = 700;
+    const darkInt = "A400";
     switch (status) {
       case "Success":
         return green[darkInt];
@@ -52,7 +51,7 @@ export default function CollapsibleRow(props) {
 
   var chooseSymbol = (status, size) => {
     // const lightInt = 200;
-    const darkInt = 700;
+    const darkInt = "A700";
     var style = size ? { fontSize: "medium" } : {};
     switch (status) {
       case "Success":
@@ -93,6 +92,18 @@ export default function CollapsibleRow(props) {
     }
   }
 
+  var getProgress = () => {
+    var currentPath = test_paths[events_data.path];
+    var total = currentPath.length
+    var done = 0;
+    for (let index = 0; index < total; index++) {
+      if (currentPath[index].step_status === "Success") {
+        done++;
+      }
+    }
+    return (done / total) * 100
+  }
+
   return (
     <TableBody>
       <TableRow style={{
@@ -106,7 +117,7 @@ export default function CollapsibleRow(props) {
         </TableCell>
         <TableCell>{events_data.name}</TableCell>
         <TableCell>
-          {symbol ? chooseSymbol(events_data.status, false) : <React.Fragment />}
+          {/* {symbol ? chooseSymbol(events_data.status, false) : <React.Fragment />} */}
           {events_data.status}
         </TableCell>
         {/* <TableCell>{events_data.path}</TableCell> */}
@@ -114,6 +125,21 @@ export default function CollapsibleRow(props) {
         <TableCell>{events_data.group}</TableCell>
         <TableCell>{processDate(events_data.plan_date)}</TableCell>
         <TableCell>{processTime(events_data.plan_time)}</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{
+          padding: 0
+        }} colSpan={8}>
+          <LinearProgress
+            variant="determinate"
+            value={getProgress()}
+            style={{
+              colorPrimary: {
+                backgroundColor: chooseColor(events_data.status)
+              }
+            }}
+          />
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{

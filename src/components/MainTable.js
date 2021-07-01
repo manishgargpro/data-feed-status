@@ -5,6 +5,7 @@ import {
   TableCell,
   TableContainer,
   TableRow,
+  TableSortLabel
 } from '@material-ui/core';
 import test_events from '../API/test_events.json';
 import CollapsibleRow from './CollapsibleRow';
@@ -13,8 +14,8 @@ export default class MainTable extends Component {
 
   state = {
     events_data: test_events,
-    bar: true,
-    symbol: false
+    bar: false,
+    symbol: true
     // paths_data: test_paths,
   }
 
@@ -42,13 +43,37 @@ export default class MainTable extends Component {
             <TableHead>
               <TableRow>
                 <TableCell />
-                <TableCell>Name</TableCell>
-                <TableCell>Status</TableCell>
+                <TableCell>
+                  <TableSortLabel
+                    active="true"
+                  >Name</TableSortLabel>
+                </TableCell>
+                <TableCell>
+                  <TableSortLabel
+                    active="true"
+                  >Status</TableSortLabel>
+                </TableCell>
                 {/* <TableCell>Path</TableCell> */}
-                <TableCell>Token</TableCell>
-                <TableCell>Group</TableCell>
-                <TableCell>Plan Date</TableCell>
-                <TableCell>Plan Time</TableCell>
+                <TableCell>
+                  <TableSortLabel
+                    active="true"
+                  >Token</TableSortLabel>
+                </TableCell>
+                <TableCell>
+                  <TableSortLabel
+                    active="true"
+                  >Group</TableSortLabel>
+                </TableCell>
+                <TableCell>
+                  <TableSortLabel
+                    active="true"
+                  >Plan Date</TableSortLabel>
+                </TableCell>
+                <TableCell>
+                  <TableSortLabel
+                    active="true"
+                  >Plan Time</TableSortLabel>
+                </TableCell>
               </TableRow>
             </TableHead>
             {this.renderTable()}
