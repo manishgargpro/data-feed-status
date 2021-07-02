@@ -8,7 +8,7 @@ import MainPage from './components/MainPage'
 
 function App() {
 
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: light)');
   //change above to 'dark' in production
 
   const theme = React.useMemo(

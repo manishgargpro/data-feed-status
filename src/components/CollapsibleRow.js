@@ -1,13 +1,12 @@
 import React from 'react';
 import {
-  Table,
   TableBody,
-  TableHead,
   TableCell,
   TableRow,
   Collapse,
   IconButton,
-  LinearProgress
+  LinearProgress,
+  CircularProgress
 } from '@material-ui/core';
 import {
   KeyboardArrowDown,
@@ -27,6 +26,8 @@ import {
   grey
 } from '@material-ui/core/colors'
 import test_paths from '../API/test_paths.json';
+import InnerChild from './InnerChild';
+import InnerStepper from './InnerStepper';
 
 export default function CollapsibleRow(props) {
   const { events_data, bar, symbol } = props;
@@ -115,10 +116,18 @@ export default function CollapsibleRow(props) {
             {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           </IconButton>
         </TableCell>
-        <TableCell>{events_data.name}</TableCell>
         <TableCell>
-          {/* {symbol ? chooseSymbol(events_data.status, false) : <React.Fragment />} */}
-          {events_data.status}
+          {/* {symbol && chooseSymbol(events_data.status, false)} */}
+          {events_data.name}
+        </TableCell>
+        <TableCell>
+          <CircularProgress
+            variant="determinate"
+            value={getProgress()}
+            style={{
+              color: chooseColor(events_data.status)
+            }}
+          />
         </TableCell>
         {/* <TableCell>{events_data.path}</TableCell> */}
         <TableCell>{events_data.token}</TableCell>
@@ -126,7 +135,7 @@ export default function CollapsibleRow(props) {
         <TableCell>{processDate(events_data.plan_date)}</TableCell>
         <TableCell>{processTime(events_data.plan_time)}</TableCell>
       </TableRow>
-      <TableRow>
+      {/* <TableRow>
         <TableCell style={{
           padding: 0
         }} colSpan={8}>
@@ -140,39 +149,26 @@ export default function CollapsibleRow(props) {
             }}
           />
         </TableCell>
-      </TableRow>
+      </TableRow> */}
       <TableRow>
         <TableCell style={{
           paddingBottom: 0,
           paddingTop: 0
         }} colSpan={8}>
           <Collapse in={open}>
-            <Table size="small">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Step Name</TableCell>
-                  <TableCell>Description</TableCell>
-                  <TableCell>Status</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {
-                  test_paths[events_data.path].map((path) => (
-                    <TableRow style={{
-                      borderLeft: bar ? "5px solid" : "0",
-                      borderColor: chooseColor(path.step_status)
-                    }}>
-                      <TableCell>{path.step_name}</TableCell>
-                      <TableCell>{path.step_description}</TableCell>
-                      <TableCell>
-                        {symbol ? chooseSymbol(path.step_status, true) : <React.Fragment />}
-                        {path.step_status}
-                      </TableCell>
-                    </TableRow>
-                  ))
-                }
-              </TableBody>
-            </Table>
+            {/* <InnerChild
+              path_data={test_paths[events_data.path]}
+              bar={bar}
+              symbol={symbol}
+              chooseColor={chooseColor}
+              chooseSymbol={chooseSymbol}
+            /> */}
+            <InnerStepper
+              path_data={test_paths[events_data.path]}
+              symbol={symbol}
+              chooseColor={chooseColor}
+              chooseSymbol={chooseSymbol}
+            />
           </Collapse>
         </TableCell>
       </TableRow>

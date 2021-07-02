@@ -51,7 +51,7 @@ export default class MainTable extends Component {
                 <TableCell>
                   <TableSortLabel
                     active="true"
-                  >Status</TableSortLabel>
+                  >Progress</TableSortLabel>
                 </TableCell>
                 {/* <TableCell>Path</TableCell> */}
                 <TableCell>
