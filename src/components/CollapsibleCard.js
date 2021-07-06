@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  TableBody,
-  TableCell,
-  TableRow,
   Collapse,
   IconButton,
-  // LinearProgress,
-  CircularProgress
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Typography
 } from '@material-ui/core';
 import {
   KeyboardArrowDown,
@@ -29,8 +29,8 @@ import test_paths from '../API/test_paths.json';
 // import InnerChild from './InnerChild';
 import InnerStepper from './InnerStepper';
 
-export default function CollapsibleRow(props) {
-  const { events_data, bar, symbol } = props;
+export default function CollapsibleCard(props) {
+  const { events_data } = props;
   const [open, setOpen] = React.useState(false);
 
   var chooseColor = (status) => {
@@ -106,72 +106,34 @@ export default function CollapsibleRow(props) {
   }
 
   return (
-    <TableBody>
-      <TableRow style={{
-        borderLeft: bar ? "10px solid" : "0",
-        borderColor: chooseColor(events_data.status)
-      }}>
-        <TableCell>
-          <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-            {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-          </IconButton>
-        </TableCell>
-        <TableCell>
-          {/* {symbol && chooseSymbol(events_data.status, false)} */}
-          {events_data.name}
-        </TableCell>
-        <TableCell>
-          <CircularProgress
-            variant="determinate"
-            value={getProgress()}
-            style={{
-              color: chooseColor(events_data.status)
-            }}
-          />
-        </TableCell>
-        {/* <TableCell>{events_data.path}</TableCell> */}
-        <TableCell>{events_data.token}</TableCell>
-        <TableCell>{events_data.group}</TableCell>
-        <TableCell>{processDate(events_data.plan_date)}</TableCell>
-        <TableCell>{processTime(events_data.plan_time)}</TableCell>
-      </TableRow>
-      {/* <TableRow>
-        <TableCell style={{
-          padding: 0
-        }} colSpan={8}>
-          <LinearProgress
-            variant="determinate"
-            value={getProgress()}
-            style={{
-              colorPrimary: {
-                backgroundColor: chooseColor(events_data.status)
-              }
-            }}
-          />
-        </TableCell>
-      </TableRow> */}
-      <TableRow>
-        <TableCell style={{
-          paddingBottom: 0,
-          paddingTop: 0
-        }} colSpan={8}>
-          <Collapse in={open}>
-            {/* <InnerChild
-              path_data={test_paths[events_data.path]}
-              bar={bar}
-              symbol={symbol}
-              chooseColor={chooseColor}
-              chooseSymbol={chooseSymbol}
-            /> */}
-            <InnerStepper
-              path_data={test_paths[events_data.path]}
-              symbol={symbol}
-              chooseColor={chooseColor}
-              chooseSymbol={chooseSymbol}
-            />
-          </Collapse>
-        </TableCell>
-      </TableRow>
-    </TableBody>
+    <Card>
+      <CardHeader
+        avatar={
+          <div>
+            {chooseSymbol(events_data.status, false)}
+            {/* <p>{events_data.status}</p> */}
+          </div>
+        }
+        title={
+          <div>
+            {events_data.name}: {processDate(events_data.plan_date)}, {processTime(events_data.plan_time)}
+          </div>
+        }
+        subheader={
+          <CardContent>
+            <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+              {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+            </IconButton>
+          </CardContent>
+        }
+      ></CardHeader>
+      <Collapse in={open}>
+        <InnerStepper
+          path_data={test_paths[events_data.path]}
+          chooseColor={chooseColor}
+          chooseSymbol={chooseSymbol}
+        />
+      </Collapse>
+    </Card>
   )
 }

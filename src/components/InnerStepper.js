@@ -8,7 +8,7 @@ import {
 
 export default function InnerStepper(props) {
 
-  const { path_data, symbol, chooseColor, chooseSymbol } = props;
+  const { path_data, chooseSymbol } = props;
 
   var getActiveStep = () => {
     for (let index = 0; index < path_data.length; index++) {

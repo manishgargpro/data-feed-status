@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MainTable from '../components/MainTable';
+import MainCardList from './MainCardList';
 import {
   AppBar,
   Toolbar,
@@ -18,7 +19,8 @@ export default class MainPage extends Component {
           </Toolbar>
         </AppBar>
         {/* darkMode={this.props.darkMode} */}
-        <MainTable></MainTable>
+        <MainTable />
+        {/* <MainCardList /> */}
       </div>
     )
   }
