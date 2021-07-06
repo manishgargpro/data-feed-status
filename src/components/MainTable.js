@@ -29,7 +29,6 @@ export default class MainTable extends Component {
           events_data={events_data[event]}
           bar={this.state.bar}
           symbol={this.state.symbol}
-        // darkMode={this.props.darkMode}
         />
       ))
     );
@@ -53,7 +52,6 @@ export default class MainTable extends Component {
                     active="true"
                   >Progress</TableSortLabel>
                 </TableCell>
-                {/* <TableCell>Path</TableCell> */}
                 <TableCell>
                   <TableSortLabel
                     active="true"
