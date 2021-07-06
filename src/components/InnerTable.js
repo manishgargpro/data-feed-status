@@ -7,7 +7,7 @@ import {
   TableRow
 } from '@material-ui/core';
 
-export default function InnerChild(props) {
+export default function InnerTable(props) {
 
   const { path_data, bar, symbol, chooseColor, chooseSymbol } = props;
 
